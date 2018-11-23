@@ -1,5 +1,5 @@
 # ImageProcessing
 # Uniform_Distribution.java
 This plugin takes an image and transforms it so that the histogram is uniformly distributed.
-![review1](https://imgur.com/a/gAoGRUK.png)
-![review2](https://imgur.com/a/IKh2PBz.png)
+![uniformimage](https://i.imgur.com/kfFa6l7.png)
+![uniformhistogram](https://i.imgur.com/jGidyds.png)
