@@ -18,8 +18,6 @@ public class Uniform_Filter implements PlugInFilter {
 				ip.set(u, v, a);
 			}
 		}
-
-		//int[] H = ip.getHistogram();
 	}
 	
 }
