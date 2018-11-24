@@ -41,9 +41,7 @@ public class Detect_Movement implements PlugIn {
   }
   return differenceP;
  }
-
-
-
+ 
  public static int[] getHistogram(ImageProcessor imageP, int K, int height) {
   int histogramValues = new int[k];
 
@@ -89,10 +87,6 @@ public class Detect_Movement implements PlugIn {
   histogram.show();
  }
 
-
-
-
-
  public static int getThreshold(double p, int[] histogramValues) {
   int numberOfPoints = (1 - p) * w * h;
   int threshold = 0;
@@ -103,6 +97,7 @@ public class Detect_Movement implements PlugIn {
   }
   return threshold;
  }
+ 
  public static ImageProcessor getThresholdedDifference(ImagePlus imp1, ImagePlus imp2, int threshold) {
   int w = imp1.getWidth();
   int h = imp1.getHeight();
@@ -124,5 +119,25 @@ public class Detect_Movement implements PlugIn {
   }
   return differenceP;
  }
+ 
+	public static ImageProcessor getMovingPixels(ImagePlus originalImage, ImagePlus mask) {
+	 ImageProcessor movingP = new ColorProcessor(w, h);
+	 movingP.setValue(255);
+	 movingP.fill();
 
+	 int w = originalImage.getWidth();
+	 int h = originalImage.getHeight();
+
+	 for (int i = 0; i < w; i++) {
+	  for (int j = 0; j < h; j++) {
+	   int[] rgbValues = originalImage.getPixel(i, j);
+	   if (mask.getPixel(i, j)[0] == 0) {
+	    movingP.putPixel(i, j, [0, 0, 0]);
+	   } else {
+	    movingP.putPixel(i, j, rgbValues);
+	   }
+	  }
+	 }
+	 return movingP;
+	}
 }
